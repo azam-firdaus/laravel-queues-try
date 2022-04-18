@@ -22,6 +22,7 @@ class SaleController extends Controller
             $chunks = array_chunk($csv,1000);
             $header = [];
             $header2 = ['key', 'title', 'description', 'style', 'mainframe', 'size', 'color','price'];
+            $temp_header = ['', '', '', '', '', '', '',''];
             $batch  = Bus::batch([])->dispatch();
             
             foreach ($chunks as $key => $chunk) {
@@ -32,17 +33,47 @@ class SaleController extends Controller
                     unset($data[0]);
                 }
                 else{
-
+                    foreach($header as $key => $val){
+                        switch ($val) {
+                            case 'UNIQUE_KEY':
+                                $temp_header[0] = $key;
+                                break;
+                            case 'PRODUCT_TITLE':
+                                $temp_header[1] = $key;
+                                break;
+                            case 'PRODUCT_DESCRIPTION':
+                                $temp_header[2] = $key;
+                                break;
+                            case 'STYLE#':
+                                $temp_header[3] = $key;
+                                break;
+                            case 'SANMAR_MAINFRAME_COLOR':
+                                $temp_header[4] = $key;
+                                break;
+                            case 'SIZE':
+                                $temp_header[5] = $key;
+                                break;
+                            case 'COLOR_NAME':
+                                $temp_header[6] = $key;
+                                break;
+                            case 'PIECE_PRICE':
+                                $temp_header[7] = $key;
+                            break;
+                            
+                            default:
+                              
+                          }
+                    }
                     for($i = 0; $i < count($data); $i++){
                         $testest = array();
-                        $testest[] = $data[$i][0];
-                        $testest[] = $data[$i][1];
-                        $testest[] = $data[$i][2];
-                        $testest[] = $data[$i][3];
-                        $testest[] = $data[$i][28];
-                        $testest[] = $data[$i][18];
-                        $testest[] = $data[$i][14];
-                        $testest[] = $data[$i][21];
+                        $testest[] = $data[$i][$temp_header[0]];
+                        $testest[] = $data[$i][$temp_header[0]];
+                        $testest[] = $data[$i][$temp_header[0]];
+                        $testest[] = $data[$i][$temp_header[0]];
+                        $testest[] = $data[$i][$temp_header[0]];
+                        $testest[] = $data[$i][$temp_header[0]];
+                        $testest[] = $data[$i][$temp_header[0]];
+                        $testest[] = $data[$i][$temp_header[0]];
 
                         $totaltt[] = $testest;
                     }
