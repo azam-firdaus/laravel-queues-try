@@ -1,23 +1,19 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Laravel 9 Import Export Excel to Database Example - CodeCheef</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-     
-<div class="container">
-    <div class="card bg-light mt-3">
-        <div class="card-header">
-            Laravel 9 Import Export Excel to Database Example - CodeCheef
-        </div>
-        <div class="card-body">
-            <form action="{{ route('user.import') }}" method="POST" enctype="multipart/form-data">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Upload Millions Records Laravel - CodeCeef</title>
+    </head>
+    <body class="antialiased">
+        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+
+            <form action="{{ route('upload') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <input type="file" name="file" class="form-control">
-                <br>
-                <button class="btn btn-success">Import User Data</button>
-            </form>
+                <input type="file" name="csv">
+                <input type="submit" value="submit">
+          </form>
+
         </div>
-    </div>
-</div>
+    </body>
+</html>
