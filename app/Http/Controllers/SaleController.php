@@ -24,8 +24,6 @@ class SaleController extends Controller
             $header2 = ['key', 'title', 'description', 'style', 'mainframe', 'size', 'color','price'];
             $batch  = Bus::batch([])->dispatch();
             
-            
-            $cococ = 0;
             foreach ($chunks as $key => $chunk) {
                 $data = array_map('str_getcsv', $chunk);
                 $totaltt = array();
@@ -34,28 +32,25 @@ class SaleController extends Controller
                     unset($data[0]);
                 }
                 else{
-                    $testest = array();
-                    $testest[] = $chunk[0];
-                    $testest[] = $chunk[1];
-                    $testest[] = $chunk[2];
-                    $testest[] = $chunk[3];
-                    $testest[] = $chunk[28];
-                    $testest[] = $chunk[18];
-                    $testest[] = $chunk[14];
-                    $testest[] = $chunk[21];
 
-                    $totaltt[] = $testest;
-                }
+                    for($i = 0; $i < count($data); $i++){
+                        $testest = array();
+                        $testest[] = $data[$i][0];
+                        $testest[] = $data[$i][1];
+                        $testest[] = $data[$i][2];
+                        $testest[] = $data[$i][3];
+                        $testest[] = $data[$i][28];
+                        $testest[] = $data[$i][18];
+                        $testest[] = $data[$i][14];
+                        $testest[] = $data[$i][21];
 
-                for($i = 1; $i < count($data); $i++){
-                     
+                        $totaltt[] = $testest;
+                    }
                 }
+                
                 $batch->add(new ProcessSaleCsv($totaltt, $header2));
                 // $batch->add(new ProcessSaleCsv($data, $header));
-                $cococ++;
-                // dd($data);
             }
-            dd('STOPOPOPOPO');
             return $batch;
         }
         return "please upload csv file";
