@@ -67,13 +67,13 @@ class SaleController extends Controller
                     for($i = 0; $i < count($data); $i++){
                         $testest = array();
                         $testest[] = $data[$i][$temp_header[0]];
-                        $testest[] = $data[$i][$temp_header[0]];
-                        $testest[] = $data[$i][$temp_header[0]];
-                        $testest[] = $data[$i][$temp_header[0]];
-                        $testest[] = $data[$i][$temp_header[0]];
-                        $testest[] = $data[$i][$temp_header[0]];
-                        $testest[] = $data[$i][$temp_header[0]];
-                        $testest[] = $data[$i][$temp_header[0]];
+                        $testest[] = $data[$i][$temp_header[1]];
+                        $testest[] = $data[$i][$temp_header[2]];
+                        $testest[] = $data[$i][$temp_header[3]];
+                        $testest[] = $data[$i][$temp_header[4]];
+                        $testest[] = $data[$i][$temp_header[5]];
+                        $testest[] = $data[$i][$temp_header[6]];
+                        $testest[] = $data[$i][$temp_header[7]];
 
                         $totaltt[] = $testest;
                     }
